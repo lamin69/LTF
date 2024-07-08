@@ -1,0 +1,24 @@
+LFT (Likely File Transfer) is a web-based file management application that supports multiple protocols including SFTP, FTP, SMB, and WebDAV. It allows users to connect to remote servers, browse files, upload, download, rename, delete files, and change permissions.
+
+Programming languages and technologies used:
+- Backend: Python (Flask framework)
+- Frontend: HTML, CSS, JavaScript (with Axios for AJAX requests)
+
+File structure:
+1. ~/LTF/LFT_DOCKER/main.py - Main Flask application             
+2. ~/LTF/LFT_DOCKER/templates/index.html - HTML template
+3. ~/LTF/LFT_DOCKER/static/css/style.css - CSS styles
+4. ~/LTF/LFT_DOCKER/static/js/script.js - JavaScript functions
+5. ~/LTF/LFT_DOCKER/requirements.txt - Python dependencies
+6. ~/LTF/LFT_DOCKER/Dockerfile - Docker configuration
+
+Key features:
+- Multi-protocol support
+- File browsing and management
+- Profile saving and management
+- Matrix-style title effect
+
+The application is containerized using Docker for easy deployment and portability.
+chmod +x ~/LTF/LFT_DOCKER/build_and_run.sh
+./build_and_run.sh
+pip install -r requirements.txt
