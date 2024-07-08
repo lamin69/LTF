@@ -1,0 +1,80 @@
+version: '3.8'
+ 
+services:
+  lft-app:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: lft-app-container
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./:/app
+      - lft-data:/data
+    environment:
+      # Flask specific variables
+      - FLASK_APP=main.py
+      - FLASK_RUN_HOST=0.0.0.0
+      - FLASK_ENV=development
+      # - FLASK_DEBUG=1  # Enable Flask debug mode
+      
+      # Application specific variables (examples)
+      # - LFT_MAX_UPLOAD_SIZE=100MB
+      # - LFT_ALLOWED_PROTOCOLS=sftp,ftp,smb,webdav
+      # - LFT_DEFAULT_PROTOCOL=sftp
+      
+      # Security related variables (examples)
+      # - LFT_ENABLE_SSL=true
+      # - LFT_SSL_CERT=/path/to/cert
+      # - LFT_SSL_KEY=/path/to/key
+      
+      # Logging related variables
+      # - LFT_LOG_LEVEL=INFO
+      # - LFT_LOG_FILE=/var/log/lft.log
+    
+    command: flask run
+    
+    # Uncomment one of the following network modes:
+    
+    # Bridge mode (default)
+    networks:
+      - lft-network
+    
+    # Host mode
+    # network_mode: host
+    
+    # MacVLAN mode
+    # networks:
+    #   lft-macvlan:
+    #     ipv4_address: 192.168.1.10  # Adjust this IP address
+    
+    restart: unless-stopped
+
+volumes:
+  lft-data:
+    name: lft-persistent-data
+
+networks:
+  # Bridge network (default)
+  lft-network:
+    name: lft-internal-network
+    driver: bridge
+  
+  # MacVLAN network (uncomment and configure if using MacVLAN mode)
+  # lft-macvlan:
+  #   driver: macvlan
+  #   driver_opts:
+  #     parent: eth0  # Replace with your host's network interface
+  #   ipam:
+  #     config:
+  #       - subnet: 192.168.1.0/24  # Adjust to match your network
+  #         gateway: 192.168.1.1    # Adjust to match your network gateway 
+
+# Additional configurations (examples)
+# configs:
+#   lft_config:
+#     file: ./config/lft_config.yml
+
+# secrets:
+#   lft_secret:
+#     file: ./secrets/lft_secret.txt
