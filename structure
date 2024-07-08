@@ -1,0 +1,73 @@
+# LFT (Likely File Transfer)
+
+LFT is a versatile, web-based file management application that supports multiple protocols including SFTP, FTP, SMB, and WebDAV. It allows users to connect to remote servers, browse files, and perform various file operations seamlessly through a user-friendly interface.
+
+![LFT Screenshot](screenshot.png)
+
+## Features
+
+- **Multi-protocol Support**: Connect to servers using SFTP, FTP, SMB, or WebDAV.
+- **Intuitive File Browser**: Easy-to-use interface for navigating remote file systems.
+- **File Operations**: Upload, download, rename, delete files, and change permissions.
+- **Profile Management**: Save and manage connection profiles for quick access.
+- **Responsive Design**: Works on desktop and mobile devices.
+- **Docker Support**: Easy deployment using Docker and Docker Compose.
+
+## Table of Contents
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [Development](#development)
+- [Contributing](#contributing)
+- [License](#license)
+- [Acknowledgments](#acknowledgments)
+
+## Installation
+
+### Prerequisites
+
+- Docker
+- Docker Compose
+
+### Setup
+
+1. Clone the repository:
+https://github.com/lamin69/LTF/LFT_DOCKER.git
+
+
+2. Build and run the Docker container:
+
+docker-compose up --lft
+
+
+3. Access the application at `http://localhost:5000`
+
+###########################    Usage    #####################################################################################################
+
+1. Select a protocol (SFTP, FTP, SMB, or WebDAV) from the dropdown menu.
+2. Enter the server details, including address, port, username, and password.
+3. Click "Connect" to establish a connection to the remote server.
+4. Use the file browser to navigate and perform operations on remote files.
+
+### File Operations
+
+- **Upload**: Click the "Upload" button and select a file from your local machine.
+- **Download**: Select a file and click the "Download" button.
+- **Rename**: Select a file, click "Rename", and enter the new name.
+- **Delete**: Select a file and click the "Delete" button.
+- **Change Permissions**: Select a file, click "Permissions", and enter the new permissions (e.g., 755).
+
+### Profile Management
+
+- **Save Profile**: Enter connection details, provide a profile name, and click "Save Profile".
+- **Load Profile**: Select a saved profile from the dropdown to auto-fill connection details.
+- **Delete Profile**: Select a profile and click "Delete Profile" to remove it.
+
+## Development
+
+To set up the development environment:
+
+2/1. Install Python 3.9 or higher.
+2/2. Install the required dependencies:
+   pip install -r requirements.txt
+3. Run the Flask development server:
