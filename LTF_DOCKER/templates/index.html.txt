@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LFT - File Management App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1 id="matrixTitle">LFT File Manager</h1>
+        </header>
+        <main>
+            <div class="connection-form">
+                <select id="protocol" onchange="updateDefaultPort()">
+                    <option value="sftp">SFTP</option>
+                    <option value="ftp">FTP</option>
+                    <option value="smb">SMB</option>
+                    <option value="webdav">WebDAV</option>
+                </select>
+                <input type="text" id="server" placeholder="Server Address">
+                <input type="text" id="port" placeholder="Port">
+                <input type="text" id="username" placeholder="Username">
+                <input type="password" id="password" placeholder="Password">
+                <button onclick="connect()">Connect <span class="status-icon"></span></button>
+                <input type="text" id="profileName" placeholder="Profile Name">
+                <button onclick="saveProfile()">Save Profile</button>
+                <select id="savedProfiles"></select>
+                <button onclick="deleteProfile()">Delete Profile</button>
+            </div>
+        </main>
+        <div id="fileBrowser" style="display: none;">
+            <nav>
+                <button id="uploadBtn" onclick="uploadFile()">Upload</button>
+                <button id="downloadBtn" onclick="downloadFile()">Download</button>
+                <button id="renameBtn" onclick="renameFile()">Rename</button>
+                <button id="deleteBtn" onclick="deleteFile()">Delete</button>
+                <button id="permissionsBtn" onclick="changePermissions()">Permissions</button>
+            </nav>
+            <div class="file-browser">
+                <ul id="fileList"></ul>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

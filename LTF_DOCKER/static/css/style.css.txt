@@ -1,0 +1,164 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.app-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 5px;
+}
+
+header {
+    text-align: center;
+    padding: 20px 0;
+}
+
+#matrixTitle {
+    font-family: 'Courier New', monospace;
+    color: #0f0;
+    text-shadow: 0 0 5px #0f0;
+    font-size: 2.5em;
+    margin: 0;
+}
+
+.connection-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.connection-form > * {
+    flex: 1 1 200px;
+}
+
+.connection-form input,
+.connection-form select,
+.connection-form button {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.connection-form button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.connection-form button:hover {
+    background-color: #0056b3;
+}
+
+.status-icon {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: red;
+    margin-left: 5px;
+    transition: background-color 0.3s;
+}
+
+#fileBrowser {
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f8f9fa;
+    padding: 10px;
+}
+
+nav button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+nav button:hover {
+    background-color: #0056b3;
+}
+
+.file-browser {
+    padding: 20px;
+}
+
+.file-browser ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.file-browser li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s;
+}
+
+.file-browser li:last-child {
+    border-bottom: none;
+}
+
+.file-browser li::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.file-browser li.folder::before {
+    background-image: url('/static/img/folder.png');
+}
+
+.file-browser li.file::before {
+    background-image: url('/static/img/file.png');
+}
+
+.file-browser li:hover {
+    background-color: #f0f0f0;
+}
+
+.file-browser li.selected {
+    background-color: #007bff;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .connection-form > * {
+        flex: 1 1 100%;
+    }
+
+    nav {
+        flex-wrap: wrap;
+    }
+
+    nav button {
+        flex: 1 1 calc(50% - 5px);
+        margin-bottom: 10px;
+    }
+}
