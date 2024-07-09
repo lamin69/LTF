@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LFT - File Management App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1 id="matrixTitle">LFT File Manager</h1>
+        </header>
+        <main>
+            <div class="connection-form">
+                <select id="protocol" onchange="updateDefaultPort()">
+                    <option value="sftp">SFTP</option>
+                    <option value="ftp">FTP</option>
+                    <option value="smb">SMB</option>
+                    <option value="webdav">WebDAV</option>
+                    <option value="gdrive">Google Drive</option>
+                    <option value="onedrive">OneDrive</option>
+                </select>
+                <input type="text" id="server" placeholder="Server Address">
+                <input type="text" id="port" placeholder="Port">
+                <input type="text" id="username" placeholder="Username">
+                <input type="password" id="password" placeholder="Password">
+                <button onclick="connect()">Connect <span class="status-icon"></span></button>
+                <input type="text" id="profileName" placeholder="Profile Name">
+                <button onclick="saveProfile()">Save Profile</button>
+                <select id="savedProfiles"></select>
+                <button onclick="deleteProfile()">Delete Profile</button>
+            </div>
+            <div id="fileBrowser" style="display: none;">
+                <nav>
+                    <button id="uploadBtn" onclick="uploadFile()">Upload</button>
+                    <button id="downloadBtn" onclick="downloadFile()">Download</button>
+                    <button id="renameBtn" onclick="renameFile()">Rename</button>
+                    <button id="deleteBtn" onclick="deleteFile()">Delete</button>
+                    <button id="permissionsBtn" onclick="changePermissions()">Permissions</button>
+                </nav>
+                <div class="file-browser">
+                    <ul id="fileList"></ul>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
+    <div id="contextMenu" class="context-menu" style="display: none;">
+        <ul>
+            <li onclick="renameFile()">Rename</li>
+            <li onclick="deleteFile()">Delete</li>
+            <li onclick="copyFile()">Copy</li>
+            <li onclick="pasteFile()">Paste</li>
+            <li onclick="openFile()">Open</li>
+        </ul>
+    </div>
+
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <input type="text" id="loginUsername" placeholder="Username" required>
+                <input type="password" id="loginPassword" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <h2>Register</h2>
+            <form id="registerForm">
+                <input type="text" id="registerUsername" placeholder="Username" required>
+                <input type="password" id="registerPassword" placeholder="Password" required>
+                <button type="submit">Register</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            document.addEventListener('contextmenu', function(e) {
+                e.preventDefault();
+                var contextMenu = document.getElementById('contextMenu');
+                contextMenu.style.display = 'block';
+                contextMenu.style.left = e.pageX + 'px';
+                contextMenu.style.top = e.pageY + 'px';
+            });
+
+            document.addEventListener('click', function(e) {
+                var contextMenu = document.getElementById('contextMenu');
+                contextMenu.style.display = 'none';
+            });
+        });
+    </script>
+</body>
+</html>

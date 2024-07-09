@@ -1,0 +1,7 @@
+These files complete the core structure of your LFT application:
+config.py contains all the configuration settings, including database URI, secret keys, and API credentials. In a production environment, you'd typically use environment variables for sensitive information.
+models.py defines the database models for User and Profile. The User model includes methods for password hashing and checking, which is a security best practice. The Profile model represents saved connection profiles for each user.
+Remember to update your main.py to import and use these models and configurations. Also, ensure that sensitive information in config.py (like client IDs and secrets) are replaced with actual values or, preferably, loaded from environment variables in a production setting.
+
+config.py: This file would contain configuration settings for the application, including secret keys, database URIs, and API credentials.
+models.py: This file would define the database models for the User and Profile classes that we're using with SQLAlchemy.
